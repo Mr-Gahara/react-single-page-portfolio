@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+body, html, #root {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+  
+.landing-page {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); /* 8 equal columns */
+    grid-template-rows: 100vh; /* Each rectangle takes up the full viewport height */
+    width: 100vw; /* 100% of the viewport width */
+    height: 100vh; /* 100% of the viewport height */
+    overflow: hidden; /* Prevent scrolling */
+}
+  
+.rectangle {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh; /* Ensure each rectangle fills the full height of the viewport */
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: brightness(0.3);
+}
+  
+.rectangle:hover::before {
+    opacity: 0; /* Hide the shadow on hover */
+}
+
+.rectangle:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+    filter: brightness(1); /* Make it a little brighter */
+    cursor: pointer;
+}
+  
+/* New styles for popup */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background with transparency */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.3s ease;
+}
+  
+.popup-content {
+    position: relative;
+    max-width: 90vw; /* Set max width to fit the viewport */
+    max-height: 90vw; /* Set max height to fit the viewport */
+    width: 37%; /* Allow the image width to adjust dynamically */
+    height: auto; /* Allow the image height to adjust dynamically */
+    overflow: hidden;
+    border-radius: 10px;
+    object-fit: contain;
+}
+
+.full-image {
+    width: 100%;
+    height: auto; /* Ensure the image height scales with its width */
+    object-fit: contain; /* Make sure the image fits without distortion */
+}
